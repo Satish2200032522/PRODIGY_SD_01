@@ -1,0 +1,56 @@
+// Define conversion functions
+function celsiusToFahrenheit(c) {
+    return (c * 9/5) + 32;
+}
+
+function celsiusToKelvin(c) {
+    return c + 273.15;
+}
+
+function fahrenheitToCelsius(f) {
+    return (f - 32) * 5/9;
+}
+
+function fahrenheitToKelvin(f) {
+    return (f - 32) * 5/9 + 273.15;
+}
+
+function kelvinToCelsius(k) {
+    return k - 273.15;
+}
+
+function kelvinToFahrenheit(k) {
+    return (k - 273.15) * 9/5 + 32;
+}
+
+// Main program
+console.log("Temperature Converter");
+
+while (true) {
+    // Get user input
+    let temp = parseFloat(prompt("Enter a temperature value: "));
+    let unit = prompt("Enter the original unit of measurement (C, F, or K): ").toUpperCase();
+
+    // Convert temperature
+    if (unit === "C") {
+        let f = celsiusToFahrenheit(temp);
+        let k = celsiusToKelvin(temp);
+        console.log(`${temp}°C is equal to ${f}°F and ${k}K`);
+    } else if (unit === "F") {
+        let c = fahrenheitToCelsius(temp);
+        let k = fahrenheitToKelvin(temp);
+        console.log(`${temp}°F is equal to ${c}°C and ${k}K`);
+    } else if (unit === "K") {
+        let c = kelvinToCelsius(temp);
+        let f = kelvinToFahrenheit(temp);
+        console.log(`${temp}K is equal to ${c}°C and ${f}°F`);
+    } else {
+        console.log("Invalid unit. Please enter C, F, or K.");
+    }
+
+    // Ask if user wants to continue
+    let response = prompt("Do you want to convert another temperature? (y/n): ").toLowerCase();
+    if (response !== "y") {
+        break;
+    }
+}
